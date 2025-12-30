@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Cost of Waiting</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0f1115;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 520px;
+      width: 100%;
+      padding: 40px 24px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    p.subtitle {
+      color: #b0b4bd;
+      font-size: 1rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: #cfd3dc;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      background: #1c1f26;
+      color: #ffffff;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.05rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background: #4f7cff;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #3d66e0;
+    }
+
+    .result {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #2a2e38;
+      display: none;
+    }
+
+    .result h2 {
+      font-size: 1rem;
+      color: #b0b4bd;
+      margin-bottom: 10px;
+    }
+
+    .amount {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #ff5c5c;
+    }
+
+    .small {
+      font-size: 0.85rem;
+      color: #9aa0ad;
+      margin-bottom: 16px;
+    }
+
+    .quote {
+      margin-top: 30px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #e5e7eb;
+      border-left: 3px solid #4f7cff;
+      padding-left: 14px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Waiting is more expensive than you think.</h1>
+    <p class="subtitle">
+      This page shows how much money you lose every year by doing nothing.
+    </p>
+
+    <label>Your age</label>
+    <input type="number" id="age" placeholder="e.g. 32">
+
+    <label>Your country</label>
+    <input type="text" id="country" placeholder="e.g. United States">
+
+    <label>Your annual income</label>
+    <input type="number" id="income" placeholder="e.g. 50000">
+
+    <label>Your main goal</label>
+    <select id="goal">
+      <option value="home">Buy a home</option>
+      <option value="freedom">Financial freedom</option>
+      <option value="retirement">Retirement security</option>
+    </select>
+
+    <button onclick="calculate()">Calculate the cost of waiting</button>
+
+    <div class="result" id="result">
+      <h2>By waiting just 1 year, you lose approximately:</h2>
+      <div class="amount" id="loss1">$0</div>
+      <div class="small">
+        This includes lost purchasing power, lost compounding, and delayed opportunity.
+      </div>
+
+      <div class="small" id="loss5"></div>
+
+      <div class="quote">
+        Time is already charging you interest.<br>
+        You just never see the bill.
+      </div>
+    </div>
+
+    <footer>
+      This is an estimate. Reality is often worse.
+    </footer>
+  </div>
+
+  <script>
+    function calculate() {
+      const income = parseFloat(document.getElementById("income").value);
+      const goal = document.getElementById("goal").value;
+
+      if (isNaN(income) || income <= 0) {
+        alert("Please enter a valid income.");
+        return;
+      }
+
+      const inflationRate = 0.04;
+      const missedReturn = 0.06;
+
+      let goalMultiplier = 0.05;
+      if (goal === "freedom") goalMultiplier = 0.08;
+      if (goal === "retirement") goalMultiplier = 0.07;
+
+      const purchasingPowerLoss = income * inflationRate;
+      const compoundingLoss = income * missedReturn;
+      const opportunityLoss = income * goalMultiplier;
+
+      const totalLoss = purchasingPowerLoss + compoundingLoss + opportunityLoss;
+      const fiveYearLoss = totalLoss * 5 * 1.15;
+
+      document.getElementById("loss1").innerText =
+        "$" + Math.round(totalLoss).toLocaleString();
+
+      document.getElementById("loss5").innerText =
+        "By waiting 5 years, you lose approximately $" +
+        Math.round(fiveYearLoss).toLocaleString() + ".";
+
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+</body>
+</html>
