@@ -1,204 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Cost of Waiting</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    }
-
+<meta charset="UTF-8">
+<title>The Cost of Waiting Index</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
     body {
-      margin: 0;
-      padding: 0;
-      background: #0f1115;
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #0b0b0b;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
 
     .container {
-      max-width: 520px;
-      width: 100%;
-      padding: 40px 24px;
+        max-width: 900px;
+        width: 90%;
+        padding: 40px;
+        background: linear-gradient(145deg, #111, #0a0a0a);
+        border-radius: 16px;
+        box-shadow: 0 0 60px rgba(0,0,0,0.8);
     }
 
     h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-      font-weight: 700;
+        font-size: 2.4rem;
+        margin-bottom: 10px;
+        text-align: center;
     }
 
     p.subtitle {
-      color: #b0b4bd;
-      font-size: 1rem;
-      margin-bottom: 30px;
-      line-height: 1.5;
+        text-align: center;
+        color: #aaa;
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
     }
 
     label {
-      display: block;
-      margin-top: 18px;
-      margin-bottom: 6px;
-      font-size: 0.9rem;
-      color: #cfd3dc;
+        display: block;
+        margin-bottom: 8px;
+        color: #ccc;
     }
 
     input, select {
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: none;
-      outline: none;
-      background: #1c1f26;
-      color: #ffffff;
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: none;
+        outline: none;
     }
 
     button {
-      margin-top: 30px;
-      width: 100%;
-      padding: 14px;
-      font-size: 1.05rem;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      background: #4f7cff;
-      color: #ffffff;
-      font-weight: 600;
+        width: 100%;
+        padding: 16px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        border: none;
+        background: #e63946;
+        color: white;
+        cursor: pointer;
+        margin-top: 20px;
     }
 
     button:hover {
-      background: #3d66e0;
+        background: #ff4d5a;
     }
 
     .result {
-      margin-top: 40px;
-      padding-top: 30px;
-      border-top: 1px solid #2a2e38;
-      display: none;
+        margin-top: 40px;
+        padding: 30px;
+        background: #141414;
+        border-radius: 12px;
+        display: none;
     }
 
     .result h2 {
-      font-size: 1rem;
-      color: #b0b4bd;
-      margin-bottom: 10px;
+        margin-top: 0;
+        color: #ff6b6b;
     }
 
-    .amount {
-      font-size: 2.6rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: #ff5c5c;
+    .metric {
+        font-size: 1.2rem;
+        margin: 12px 0;
     }
 
-    .small {
-      font-size: 0.85rem;
-      color: #9aa0ad;
-      margin-bottom: 16px;
+    .highlight {
+        font-size: 1.6rem;
+        color: #ffd166;
+        margin-top: 20px;
     }
 
-    .quote {
-      margin-top: 30px;
-      font-size: 1.1rem;
-      line-height: 1.5;
-      color: #e5e7eb;
-      border-left: 3px solid #4f7cff;
-      padding-left: 14px;
+    .footer {
+        margin-top: 40px;
+        text-align: center;
+        color: #666;
+        font-size: 0.9rem;
     }
-
-    footer {
-      margin-top: 40px;
-      font-size: 0.75rem;
-      color: #6b7280;
-      text-align: center;
-    }
-  </style>
+</style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>Waiting is more expensive than you think.</h1>
+
+<div class="container">
+    <h1>The Cost of Waiting Index</h1>
     <p class="subtitle">
-      This page shows how much money you lose every year by doing nothing.
+        Every year you delay action, time quietly takes value away from your future.
     </p>
 
-    <label>Your age</label>
-    <input type="number" id="age" placeholder="e.g. 32">
-
-    <label>Your country</label>
-    <input type="text" id="country" placeholder="e.g. United States">
-
-    <label>Your annual income</label>
-    <input type="number" id="income" placeholder="e.g. 50000">
-
-    <label>Your main goal</label>
-    <select id="goal">
-      <option value="home">Buy a home</option>
-      <option value="freedom">Financial freedom</option>
-      <option value="retirement">Retirement security</option>
-    </select>
-
-    <button onclick="calculate()">Calculate the cost of waiting</button>
-
-    <div class="result" id="result">
-      <h2>By waiting just 1 year, you lose approximately:</h2>
-      <div class="amount" id="loss1">$0</div>
-      <div class="small">
-        This includes lost purchasing power, lost compounding, and delayed opportunity.
-      </div>
-
-      <div class="small" id="loss5"></div>
-
-      <div class="quote">
-        Time is already charging you interest.<br>
-        You just never see the bill.
-      </div>
+    <div class="form-group">
+        <label>Age</label>
+        <input type="number" id="age" placeholder="e.g. 30">
     </div>
 
-    <footer>
-      This is an estimate. Reality is often worse.
-    </footer>
-  </div>
+    <div class="form-group">
+        <label>Country</label>
+        <select id="country">
+            <option value="1.02">USA / Developed Economy</option>
+            <option value="1.04">Emerging Economy</option>
+            <option value="1.06">High Inflation Economy</option>
+        </select>
+    </div>
 
-  <script>
-    function calculate() {
-      const income = parseFloat(document.getElementById("income").value);
-      const goal = document.getElementById("goal").value;
+    <div class="form-group">
+        <label>Annual Income (USD)</label>
+        <input type="number" id="income" placeholder="e.g. 50000">
+    </div>
 
-      if (isNaN(income) || income <= 0) {
-        alert("Please enter a valid income.");
+    <button onclick="calculate()">Calculate My Cost of Waiting</button>
+
+    <div class="result" id="result">
+        <h2>Your Cost of Waiting</h2>
+
+        <div class="metric" id="year1"></div>
+        <div class="metric" id="year5"></div>
+        <div class="metric" id="year10"></div>
+
+        <div class="highlight" id="index"></div>
+    </div>
+
+    <div class="footer">
+        This is an educational estimate. The real cost is often higher.
+    </div>
+</div>
+
+<script>
+function calculate() {
+    const age = parseInt(document.getElementById("age").value);
+    const income = parseFloat(document.getElementById("income").value);
+    const inflationFactor = parseFloat(document.getElementById("country").value);
+
+    if (!age || !income) {
+        alert("Please complete all fields.");
         return;
-      }
-
-      const inflationRate = 0.04;
-      const missedReturn = 0.06;
-
-      let goalMultiplier = 0.05;
-      if (goal === "freedom") goalMultiplier = 0.08;
-      if (goal === "retirement") goalMultiplier = 0.07;
-
-      const purchasingPowerLoss = income * inflationRate;
-      const compoundingLoss = income * missedReturn;
-      const opportunityLoss = income * goalMultiplier;
-
-      const totalLoss = purchasingPowerLoss + compoundingLoss + opportunityLoss;
-      const fiveYearLoss = totalLoss * 5 * 1.15;
-
-      document.getElementById("loss1").innerText =
-        "$" + Math.round(totalLoss).toLocaleString();
-
-      document.getElementById("loss5").innerText =
-        "By waiting 5 years, you lose approximately $" +
-        Math.round(fiveYearLoss).toLocaleString() + ".";
-
-      document.getElementById("result").style.display = "block";
     }
-  </script>
+
+    // Simple opportunity cost model
+    const opportunityRate = 0.08; // 8% missed growth
+    const realLossRate = inflationFactor * opportunityRate;
+
+    const loss1 = income * realLossRate;
+    const loss5 = loss1 * 5 * 1.2;
+    const loss10 = loss1 * 10 * 1.5;
+
+    const index = Math.round((loss10 / income) * 100);
+
+    document.getElementById("year1").innerText =
+        "Waiting 1 year costs you approximately $" + loss1.toFixed(0);
+
+    document.getElementById("year5").innerText =
+        "Waiting 5 years costs you approximately $" + loss5.toFixed(0);
+
+    document.getElementById("year10").innerText =
+        "Waiting 10 years costs you approximately $" + loss10.toFixed(0);
+
+    document.getElementById("index").innerText =
+        "Your Cost of Waiting Index: " + index + " / 100";
+
+    document.getElementById("result").style.display = "block";
+}
+</script>
+
 </body>
 </html>
