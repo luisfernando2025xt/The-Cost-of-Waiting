@@ -2,130 +2,126 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Opportunity Cost Calculator – See How Much Money You Lose by Waiting</title>
+<title>The Cost of Waiting – See How Much Money You Lose Every Day</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free opportunity cost calculator. Instantly see how much money you lose by waiting, delaying decisions, or doing nothing. Simple, fast, and clear.">
+<meta name="description" content="See how much money you lose by waiting. This real-time cost of waiting calculator shows the hidden price of inaction in days, months, and years.">
+
+<link rel="canonical" href="https://luisfernando2025xt.github.io/The-Cost-of-Waiting/" />
 
 <style>
-    body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-        background: #0b0b0b;
-        color: #ffffff;
-        line-height: 1.6;
-    }
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #0b0b0b;
+    color: #ffffff;
+}
 
-    .container {
-        max-width: 900px;
-        margin: auto;
-        padding: 24px;
-    }
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 24px;
+}
 
-    h1 {
-        font-size: clamp(28px, 4vw, 44px);
-        margin-bottom: 12px;
-        font-weight: 800;
-    }
+h1 {
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 900;
+    margin-bottom: 12px;
+}
 
-    .subtitle {
-        color: #b5b5b5;
-        font-size: 16px;
-        max-width: 700px;
-        margin-bottom: 32px;
-    }
+.subtitle {
+    color: #b5b5b5;
+    font-size: 17px;
+    max-width: 720px;
+    margin-bottom: 36px;
+}
 
-    .calculator {
-        background: #111;
-        border: 1px solid #222;
-        border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 40px;
-    }
+.calculator {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 14px;
+    padding: 28px;
+}
 
-    .field {
-        margin-bottom: 20px;
-    }
+.field {
+    margin-bottom: 22px;
+}
 
-    label {
-        display: block;
-        font-size: 14px;
-        color: #aaa;
-        margin-bottom: 6px;
-    }
+label {
+    display: block;
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 6px;
+}
 
-    input, select {
-        width: 100%;
-        padding: 14px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 1px solid #333;
-        background: #000;
-        color: #fff;
-    }
+input, select {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #000;
+    color: #fff;
+}
 
-    button {
-        width: 100%;
-        padding: 16px;
-        font-size: 16px;
-        font-weight: 700;
-        border-radius: 10px;
-        border: none;
-        cursor: pointer;
-        background: #ffffff;
-        color: #000;
-        margin-top: 10px;
-    }
+button {
+    width: 100%;
+    padding: 18px;
+    font-size: 17px;
+    font-weight: 800;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: #ffffff;
+    color: #000;
+    margin-top: 14px;
+}
 
-    button:hover {
-        opacity: 0.9;
-    }
+.results {
+    margin-top: 34px;
+    text-align: center;
+}
 
-    .results {
-        margin-top: 30px;
-        text-align: center;
-    }
+.big-number {
+    font-size: clamp(40px, 7vw, 70px);
+    font-weight: 900;
+    margin-bottom: 6px;
+}
 
-    .big-number {
-        font-size: clamp(36px, 6vw, 64px);
-        font-weight: 900;
-        margin-bottom: 8px;
-    }
+.label {
+    color: #aaa;
+    font-size: 14px;
+}
 
-    .label {
-        color: #aaa;
-        font-size: 14px;
-    }
+.breakdown {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 26px;
+    font-size: 15px;
+    color: #ccc;
+}
 
-    .breakdown {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 24px;
-        font-size: 14px;
-        color: #ccc;
-    }
+.seo {
+    margin-top: 70px;
+    color: #d0d0d0;
+}
 
-    .seo {
-        margin-top: 60px;
-        color: #d0d0d0;
-    }
+.seo h2 {
+    margin-top: 42px;
+    font-size: 26px;
+    color: #fff;
+}
 
-    .seo h2 {
-        margin-top: 40px;
-        font-size: 24px;
-        color: #fff;
-    }
-
-    footer {
-        margin-top: 80px;
-        padding: 24px 0;
-        border-top: 1px solid #222;
-        text-align: center;
-        font-size: 13px;
-        color: #666;
-    }
+footer {
+    margin-top: 90px;
+    padding: 28px 0;
+    border-top: 1px solid #222;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+}
 </style>
 </head>
 
@@ -133,83 +129,71 @@
 
 <div class="container">
 
-    <h1>Opportunity Cost Calculator</h1>
-    <div class="subtitle">
-        Instantly see how much money you lose by waiting, delaying decisions, or doing nothing.
-        This free calculator shows the hidden cost of inaction in real time.
-    </div>
+<h1>The Cost of Waiting</h1>
+<div class="subtitle">
+Every day you wait, you lose money. This calculator shows the real financial cost of delaying decisions,
+projects, or action — in real numbers, not motivation.
+</div>
 
-<p style="margin-bottom:32px;">
-    Want to explore another way to measure delay?
-    <a href="waiting-cost-calculator.html" style="color:#fff; text-decoration:underline;">
-        Try the Waiting Cost Calculator
-    </a>
-    to see how time quietly destroys value.
+<div class="calculator">
+
+<div class="field">
+<label>Monthly income or revenue (USD)</label>
+<input type="number" id="income" placeholder="e.g. 5000">
+</div>
+
+<div class="field">
+<label>How long are you waiting?</label>
+<input type="number" id="delay" placeholder="e.g. 6">
+</div>
+
+<div class="field">
+<label>Time unit</label>
+<select id="unit">
+<option value="months">Months</option>
+<option value="days">Days</option>
+<option value="years">Years</option>
+</select>
+</div>
+
+<button onclick="calculate()">Show me the cost of waiting</button>
+
+<div class="results" id="results" style="display:none;">
+<div class="big-number" id="totalLost">$0</div>
+<div class="label">Total money lost by waiting</div>
+
+<div class="breakdown">
+<div id="perDay">$0 / day</div>
+<div id="perMonth">$0 / month</div>
+<div id="perYear">$0 / year</div>
+</div>
+</div>
+
+</div>
+
+<div class="seo">
+<h2>What is the cost of waiting?</h2>
+<p>
+The cost of waiting is the money you silently lose by delaying action. Even when nothing happens,
+time keeps charging interest against your potential.
 </p>
-    
-    <div class="calculator">
-        <div class="field">
-            <label>Monthly income or revenue (USD)</label>
-            <input type="number" id="income" placeholder="e.g. 4000">
-        </div>
 
-        <div class="field">
-            <label>Delay period</label>
-            <input type="number" id="delay" placeholder="e.g. 6">
-        </div>
+<h2>Why waiting feels safe but is expensive</h2>
+<p>
+Most people delay decisions to avoid risk, but in reality waiting creates guaranteed losses.
+This calculator makes those invisible losses visible.
+</p>
 
-        <div class="field">
-            <label>Delay unit</label>
-            <select id="unit">
-                <option value="months">Months</option>
-                <option value="days">Days</option>
-                <option value="years">Years</option>
-            </select>
-        </div>
+<h2>Who this tool is for</h2>
+<p>
+Entrepreneurs, professionals, freelancers, and decision-makers who want clarity instead of motivation.
+If time matters to you, waiting should scare you.
+</p>
+</div>
 
-        <button onclick="calculate()">Calculate opportunity cost</button>
-
-        <div class="results" id="results" style="display:none;">
-            <div class="big-number" id="totalLost">$0</div>
-            <div class="label">Total opportunity cost</div>
-
-            <div class="breakdown">
-                <div id="perDay">$0 / day</div>
-                <div id="perMonth">$0 / month</div>
-                <div id="perYear">$0 / year</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="seo">
-        <h2>What is opportunity cost?</h2>
-        <p>
-            Opportunity cost is the value of what you give up when you choose to wait or do nothing.
-            Every delayed decision has a hidden financial cost, even if no money leaves your bank account.
-        </p>
-
-        <h2>How this opportunity cost calculator works</h2>
-        <p>
-            This calculator estimates how much income or revenue you lose over time by delaying action.
-            Simply enter your monthly income, choose how long you delay, and instantly see the financial impact.
-        </p>
-
-        <h2>Why waiting is expensive</h2>
-        <p>
-            Waiting feels safe, but it compounds losses quietly. Whether it's delaying a career move,
-            a business decision, or an investment, time is the most expensive resource you can waste.
-        </p>
-
-        <h2>Who should use this calculator?</h2>
-        <p>
-            This tool is useful for individuals, freelancers, entrepreneurs, and business owners who want
-            to understand the real cost of inaction and make better decisions faster.
-        </p>
-    </div>
-
-    <footer>
-        Free opportunity cost calculator · Built for clarity, speed, and better decisions
-    </footer>
+<footer>
+Free cost of waiting calculator · Built for clarity, speed, and decisive action
+</footer>
 
 </div>
 
@@ -220,7 +204,6 @@ function calculate() {
     const unit = document.getElementById("unit").value;
 
     let months = 0;
-
     if (unit === "months") months = delay;
     if (unit === "days") months = delay / 30;
     if (unit === "years") months = delay * 12;
