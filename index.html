@@ -2,187 +2,181 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>The Cost of Waiting Index</title>
+<title>The Cost of Waiting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="See how much money you are losing every second by doing nothing. A live counter that shows the real cost of waiting.">
 <style>
-    body {
+    html, body {
         margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #0b0b0b;
-        color: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
+        padding: 0;
+        background: #000;
+        color: #fff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        height: 100%;
     }
 
     .container {
-        max-width: 900px;
-        width: 90%;
-        padding: 40px;
-        background: linear-gradient(145deg, #111, #0a0a0a);
-        border-radius: 16px;
-        box-shadow: 0 0 60px rgba(0,0,0,0.8);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 24px;
     }
 
     h1 {
-        font-size: 2.4rem;
-        margin-bottom: 10px;
-        text-align: center;
+        font-size: clamp(28px, 5vw, 56px);
+        font-weight: 700;
+        margin-bottom: 12px;
     }
 
-    p.subtitle {
-        text-align: center;
+    .subtitle {
+        font-size: clamp(14px, 2.5vw, 18px);
         color: #aaa;
-        margin-bottom: 40px;
-        font-size: 1.1rem;
+        max-width: 520px;
+        margin-bottom: 32px;
     }
 
-    .form-group {
-        margin-bottom: 20px;
+    .input-box {
+        margin-bottom: 24px;
     }
 
-    label {
-        display: block;
-        margin-bottom: 8px;
-        color: #ccc;
-    }
-
-    input, select {
-        width: 100%;
-        padding: 12px;
-        font-size: 1rem;
-        border-radius: 8px;
-        border: none;
+    input {
+        background: #111;
+        border: 1px solid #333;
+        color: #fff;
+        padding: 14px 16px;
+        font-size: 18px;
+        width: 240px;
+        text-align: center;
+        border-radius: 6px;
         outline: none;
     }
 
+    input::placeholder {
+        color: #666;
+    }
+
     button {
-        width: 100%;
-        padding: 16px;
-        font-size: 1.1rem;
-        border-radius: 10px;
+        margin-top: 16px;
+        padding: 14px 28px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 6px;
         border: none;
-        background: #e63946;
-        color: white;
         cursor: pointer;
-        margin-top: 20px;
+        background: #fff;
+        color: #000;
     }
 
     button:hover {
-        background: #ff4d5a;
+        opacity: 0.9;
     }
 
-    .result {
+    .counter {
         margin-top: 40px;
-        padding: 30px;
-        background: #141414;
-        border-radius: 12px;
-        display: none;
+        font-size: clamp(32px, 7vw, 72px);
+        font-weight: 800;
+        letter-spacing: 1px;
     }
 
-    .result h2 {
-        margin-top: 0;
-        color: #ff6b6b;
+    .label {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #aaa;
     }
 
-    .metric {
-        font-size: 1.2rem;
-        margin: 12px 0;
+    .breakdown {
+        margin-top: 32px;
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+        color: #ccc;
+        font-size: 14px;
     }
 
-    .highlight {
-        font-size: 1.6rem;
-        color: #ffd166;
-        margin-top: 20px;
-    }
-
-    .footer {
-        margin-top: 40px;
+    .ad-top, .ad-bottom {
+        width: 100%;
         text-align: center;
-        color: #666;
-        font-size: 0.9rem;
+        padding: 10px 0;
+        background: #0a0a0a;
+        color: #444;
+        font-size: 12px;
+    }
+
+    .ad-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
     }
 </style>
 </head>
 <body>
 
+<div class="ad-top">
+    <!-- AdSense Top Banner -->
+    Your Ad Here
+</div>
+
 <div class="container">
-    <h1>The Cost of Waiting Index</h1>
-    <p class="subtitle">
-        Every year you delay action, time quietly takes value away from your future.
-    </p>
-
-    <div class="form-group">
-        <label>Age</label>
-        <input type="number" id="age" placeholder="e.g. 30">
+    <h1>Every second you wait, you lose money.</h1>
+    <div class="subtitle">
+        Doing nothing feels free. It isn’t.  
+        This counter shows the silent cost of waiting.
     </div>
 
-    <div class="form-group">
-        <label>Country</label>
-        <select id="country">
-            <option value="1.02">USA / Developed Economy</option>
-            <option value="1.04">Emerging Economy</option>
-            <option value="1.06">High Inflation Economy</option>
-        </select>
+    <div class="input-box">
+        <input type="number" id="income" placeholder="Monthly income (USD)">
+        <br>
+        <button onclick="startCounter()">START</button>
     </div>
 
-    <div class="form-group">
-        <label>Annual Income (USD)</label>
-        <input type="number" id="income" placeholder="e.g. 50000">
-    </div>
+    <div class="counter" id="lost">$0</div>
+    <div class="label">Money lost so far</div>
 
-    <button onclick="calculate()">Calculate My Cost of Waiting</button>
-
-    <div class="result" id="result">
-        <h2>Your Cost of Waiting</h2>
-
-        <div class="metric" id="year1"></div>
-        <div class="metric" id="year5"></div>
-        <div class="metric" id="year10"></div>
-
-        <div class="highlight" id="index"></div>
-    </div>
-
-    <div class="footer">
-        This is an educational estimate. The real cost is often higher.
+    <div class="breakdown">
+        <div id="perHour">$0 / hour</div>
+        <div id="perDay">$0 / day</div>
+        <div id="perYear">$0 / year</div>
     </div>
 </div>
 
+<div class="ad-bottom">
+    <!-- AdSense Sticky Banner -->
+    Your Ad Here
+</div>
+
 <script>
-function calculate() {
-    const age = parseInt(document.getElementById("age").value);
-    const income = parseFloat(document.getElementById("income").value);
-    const inflationFactor = parseFloat(document.getElementById("country").value);
+let interval;
+let lost = 0;
+let lossPerSecond = 0;
 
-    if (!age || !income) {
-        alert("Please complete all fields.");
-        return;
-    }
+function startCounter() {
+    clearInterval(interval);
 
-    // Simple opportunity cost model
-    const opportunityRate = 0.08; // 8% missed growth
-    const realLossRate = inflationFactor * opportunityRate;
+    const incomeInput = document.getElementById("income").value;
+    const monthlyIncome = incomeInput && incomeInput > 0 ? incomeInput : 3000;
 
-    const loss1 = income * realLossRate;
-    const loss5 = loss1 * 5 * 1.2;
-    const loss10 = loss1 * 10 * 1.5;
+    const yearlyIncome = monthlyIncome * 12;
+    const workingSeconds = 365 * 24 * 60 * 60;
 
-    const index = Math.round((loss10 / income) * 100);
+    lossPerSecond = yearlyIncome / workingSeconds;
+    lost = 0;
 
-    document.getElementById("year1").innerText =
-        "Waiting 1 year costs you approximately $" + loss1.toFixed(0);
+    document.getElementById("perHour").innerText =
+        "$" + (lossPerSecond * 3600).toFixed(2) + " / hour";
+    document.getElementById("perDay").innerText =
+        "$" + (lossPerSecond * 86400).toFixed(2) + " / day";
+    document.getElementById("perYear").innerText =
+        "$" + yearlyIncome.toFixed(2) + " / year";
 
-    document.getElementById("year5").innerText =
-        "Waiting 5 years costs you approximately $" + loss5.toFixed(0);
-
-    document.getElementById("year10").innerText =
-        "Waiting 10 years costs you approximately $" + loss10.toFixed(0);
-
-    document.getElementById("index").innerText =
-        "Your Cost of Waiting Index: " + index + " / 100";
-
-    document.getElementById("result").style.display = "block";
+    interval = setInterval(() => {
+        lost += lossPerSecond;
+        document.getElementById("lost").innerText =
+            "$" + lost.toFixed(2);
+    }, 100);
 }
 </script>
 
